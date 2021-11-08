@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using CaraDotNetCore5V2.Domain.Entities.Data;
 
 namespace CaraDotNetCore5V2.Infrastructure.DbContexts
 {
@@ -23,6 +24,7 @@ namespace CaraDotNetCore5V2.Infrastructure.DbContexts
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<ScanLogs> ScanLogs { get; set; }
 
         public IDbConnection Connection => Database.GetDbConnection();
 
