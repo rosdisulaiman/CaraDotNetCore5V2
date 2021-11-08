@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CaraDotNetCore5V2.Web</name>
+    </assembly>
+    <members>
+        <member name="P:CaraDotNetCore5V2.Web.Helpers.ActiveRouteTagHelper.Action">
+            <summary>The name of the action method.</summary>
+            <remarks>Must be <c>null</c> if <see cref="P:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Route" /> is non-<c>null</c>.</remarks>
+        </member>
+        <member name="P:CaraDotNetCore5V2.Web.Helpers.ActiveRouteTagHelper.Controller">
+            <summary>The name of the controller.</summary>
+            <remarks>Must be <c>null</c> if <see cref="P:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Route" /> is non-<c>null</c>.</remarks>
+        </member>
+        <member name="P:CaraDotNetCore5V2.Web.Helpers.ActiveRouteTagHelper.RouteValues">
+            <summary>Additional parameters for the route.</summary>
+        </member>
+        <member name="P:CaraDotNetCore5V2.Web.Helpers.ActiveRouteTagHelper.ViewContext">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNetCore.Mvc.Rendering.ViewContext" /> for the current request.
+            </summary>
+        </member>
+    </members>
+</doc>
