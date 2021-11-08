@@ -1,5 +1,6 @@
 ﻿using CaraDotNetCore5V2.Application.Interfaces.Repositories;
 using CaraDotNetCore5V2.Domain.Entities.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using System;
 using System.Collections.Generic;
@@ -22,24 +23,28 @@ namespace CaraDotNetCore5V2.Infrastructure.Repositories
 
         public IQueryable<Face> Faces => _repository.Entities;
 
-        public Task DeleteAsync(Face face)
+        public async Task DeleteAsync(Face face)
         {
-            throw new NotImplementedException();
+            await _repository.DeleteAsync(face);
+            await _distributedCache.RemoveAsync(CacheKeys.FaceCacheKeys.ListKey);
+            await _distributedCache.RemoveAsync(CacheKeys.FaceCacheKeys.GetKey(face.Id));
         }
 
-        public Task<Face> GetByIdAsync(int faceId)
+        public async Task<Face> GetByIdAsync(int faceId)
         {
-            throw new NotImplementedException();
+            return await _repository.Entities.Where(p => p.Id == faceId).FirstOrDefaultAsync();
         }
 
-        public Task<List<Face>> GetListAsync()
+        public async Task<List<Face>> GetListAsync()
         {
-            throw new NotImplementedException();
+            return await _repository.Entities.ToListAsync();
         }
 
-        public Task UpdateAsync(Face face)
+        public async Task<int> InsertAsync(Face face)
         {
-            throw new NotImplementedException();
+            await _repository.AddAsync(face);
+            await _distributedCache.RemoveAsync(CacheKeys.FaceCacheKeys.ListKey);
+            return face.Id;
         }
     }
 }

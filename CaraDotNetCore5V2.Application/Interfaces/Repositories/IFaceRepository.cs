@@ -14,7 +14,7 @@ namespace CaraDotNetCore5V2.Application.Interfaces.Repositories
 
         Task<Face> GetByIdAsync(int faceId);
 
-        Task UpdateAsync(Face face);
+        Task<int> InsertAsync(Face face);
 
         Task DeleteAsync(Face face);
     }

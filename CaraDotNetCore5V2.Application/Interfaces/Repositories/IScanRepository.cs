@@ -11,7 +11,7 @@ namespace CaraDotNetCore5V2.Application.Interfaces.Repositories
     {
         Task<List<ScanLogs>> GetListAsync();
 
-        Task<ScanLogs> GetByIdAsync(int LogId);
+        Task<ScanLogs> GetByIdAsync(int logId);
 
         Task<int> InsertAsync(ScanLogs scanLog);
 

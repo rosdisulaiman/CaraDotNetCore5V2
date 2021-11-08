@@ -1,5 +1,6 @@
 ﻿using CaraDotNetCore5V2.Application.Interfaces.Repositories;
 using CaraDotNetCore5V2.Domain.Entities.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using System;
 using System.Collections.Generic;
@@ -29,19 +30,21 @@ namespace CaraDotNetCore5V2.Infrastructure.Repositories
             await _distributedCache.RemoveAsync(CacheKeys.ScanCacheKeys.GetKey(scanLog.Id));
         }
 
-        public Task<ScanLogs> GetByIdAsync(int LogId)
+        public async Task<ScanLogs> GetByIdAsync(int logId)
         {
-            throw new NotImplementedException();
+            return await _repository.Entities.Where(s => s.Id == logId).FirstOrDefaultAsync();
         }
 
-        public Task<List<ScanLogs>> GetListAsync()
+        public async Task<List<ScanLogs>> GetListAsync()
         {
-            throw new NotImplementedException();
+            return await _repository.Entities.ToListAsync();
         }
 
-        public Task<int> InsertAsync(ScanLogs scanLog)
+        public async Task<int> InsertAsync(ScanLogs scanLog)
         {
-            throw new NotImplementedException();
+            await _repository.AddAsync(scanLog);
+            await _distributedCache.RemoveAsync(CacheKeys.ScanCacheKeys.ListKey);
+            return scanLog.Id;
         }
     }
 }
