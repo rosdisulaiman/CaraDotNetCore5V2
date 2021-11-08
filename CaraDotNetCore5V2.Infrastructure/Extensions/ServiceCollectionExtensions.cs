@@ -28,6 +28,10 @@ namespace CaraDotNetCore5V2.Infrastructure.Extensions
             services.AddTransient<IProductCacheRepository, ProductCacheRepository>();
             services.AddTransient<IBrandRepository, BrandRepository>();
             services.AddTransient<IBrandCacheRepository, BrandCacheRepository>();
+            services.AddTransient<IScanRepository, ScanRepository>();
+            services.AddTransient<IScanCacheRepository, ScanCacheRepository>();
+            services.AddTransient<IFaceRepository, FaceRepository>();
+            services.AddTransient<IFaceCacheRepository, FaceCacheRepository>();
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
