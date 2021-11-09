@@ -9,6 +9,7 @@ namespace CaraDotNetCore5V2.Application.Interfaces.Repositories
 {
     public interface IScanRepository
     {
+        IQueryable<ScanLogs> Scans { get; }
         Task<List<ScanLogs>> GetListAsync();
 
         Task<ScanLogs> GetByIdAsync(int logId);

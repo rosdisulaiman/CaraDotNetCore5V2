@@ -5,16 +5,20 @@ using AutoMapper;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using System;
+using CaraDotNetCore5V2.Application.Features.Face.Commands.Create;
+using System.Collections.Generic;
 
 namespace CaraDotNetCore5V2.Application.Features.Products.Commands.Create
 {
     public partial class CreateProductCommand : IRequest<Result<int>>
     {
-        public string Name { get; set; }
-        public string Barcode { get; set; }
-        public string Description { get; set; }
-        public decimal Rate { get; set; }
-        public int BrandId { get; set; }
+        public int LogId { get; set; }
+        public DateTime LoggedTime { get; set; }
+        public string ScanLocation { get; set; }
+        public int time { get; set; }
+        public int timelocal { get; set; }
+        public List<CreateFaceCommand> Faces { get; set; }
     }
 
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Result<int>>

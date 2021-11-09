@@ -8,6 +8,7 @@ namespace CaraDotNetCore5V2.Infrastructure.CacheKeys
 {
     public static class ScanCacheKeys
     {
+
         public static string ListKey => "ScanList";
 
         public static string SelectListKey => "ScanSelectList";

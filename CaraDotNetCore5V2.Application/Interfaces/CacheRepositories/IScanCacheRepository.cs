@@ -9,8 +9,8 @@ namespace CaraDotNetCore5V2.Application.Interfaces.CacheRepositories
 {
     public interface IScanCacheRepository
     {
-        Task<List<Face>> GetCachedListAsync();
+        Task<List<ScanLogs>> GetCachedListAsync();
 
-        Task<Face> GetByIdAsync(int faceId);
+        Task<ScanLogs> GetByIdAsync(int LogId);
     }
 }

@@ -1,12 +1,13 @@
-﻿using CaraDotNetCore5V2.Application.Interfaces.CacheRepositories;
+﻿using AspNetCoreHero.ThrowR;
+using CaraDotNetCore5V2.Application.Interfaces.CacheRepositories;
 using CaraDotNetCore5V2.Application.Interfaces.Repositories;
 using CaraDotNetCore5V2.Domain.Entities.Data;
 using Microsoft.Extensions.Caching.Distributed;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using AspNetCoreHero.Extensions.Caching;
+using CaraDotNetCore5V2.Infrastructure.CacheKeys;
 
 namespace CaraDotNetCore5V2.Infrastructure.CacheRepositories
 {
@@ -21,14 +22,30 @@ namespace CaraDotNetCore5V2.Infrastructure.CacheRepositories
             _scanRepository = scanRepository;
         }
 
-        public Task<Face> GetByIdAsync(int faceId)
+        public async Task<ScanLogs> GetByIdAsync(int LogId)
         {
-            throw new NotImplementedException();
+
+            string cacheKey = ScanCacheKeys.GetKey(LogId);
+            var scan = await _distributedCache.GetAsync<ScanLogs>(cacheKey);
+            if (scan == null)
+            {
+                scan = await _scanRepository.GetByIdAsync(LogId);
+                Throw.Exception.IfNull(scan, "Scan", "No Scan Found");
+                await _distributedCache.SetAsync(cacheKey, scan);
+            }
+            return scan;
         }
 
-        public Task<List<Face>> GetCachedListAsync()
+        public async Task<List<ScanLogs>> GetCachedListAsync()
         {
-            throw new NotImplementedException();
+            string cacheKey = ScanCacheKeys.ListKey;
+            var scanList = await _distributedCache.GetAsync<List<ScanLogs>>(cacheKey);
+            if (scanList == null)
+            {
+                scanList = await _scanRepository.GetListAsync();
+                await _distributedCache.SetAsync(cacheKey, scanList);
+            }
+            return scanList;
         }
     }
 }

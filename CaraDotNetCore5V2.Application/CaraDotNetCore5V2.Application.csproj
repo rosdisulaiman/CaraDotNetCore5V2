@@ -21,4 +21,8 @@
   <ItemGroup>
     <ProjectReference Include="..\CaraDotNetCore5V2.Domain\CaraDotNetCore5V2.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\Scan\Commands\Update\" />
+    <Folder Include="Features\Scan\Commands\Delete\" />
+  </ItemGroup>
 </Project>

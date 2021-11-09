@@ -21,7 +21,7 @@ namespace CaraDotNetCore5V2.Infrastructure.Repositories
             _repository = repository;
         }
 
-        public IQueryable<ScanLogs> scanLogs => _repository.Entities;
+        public IQueryable<ScanLogs> Scans => _repository.Entities;
 
         public async Task DeleteAsync(ScanLogs scanLog)
         {
@@ -32,7 +32,9 @@ namespace CaraDotNetCore5V2.Infrastructure.Repositories
 
         public async Task<ScanLogs> GetByIdAsync(int logId)
         {
-            return await _repository.Entities.Where(s => s.Id == logId).FirstOrDefaultAsync();
+            return await _repository.Entities.Where(s => s.LogId == logId)
+                .Include(f => f.Faces)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<List<ScanLogs>> GetListAsync()

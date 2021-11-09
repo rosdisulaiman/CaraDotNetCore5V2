@@ -4,8 +4,6 @@ using CaraDotNetCore5V2.Domain.Entities.Data;
 using Microsoft.Extensions.Caching.Distributed;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CaraDotNetCore5V2.Infrastructure.CacheRepositories
@@ -21,12 +19,22 @@ namespace CaraDotNetCore5V2.Infrastructure.CacheRepositories
             _faceRepository = faceRepository;
         }
 
-        public Task<ScanLogs> GetByIdAsync(int faceId)
+        Task<Face> GetByIdAsync(int faceId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<ScanLogs>> GetCachedListAsync()
+        Task<Face> IFaceCacheRepository.GetByIdAsync(int faceId)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<List<Face>> GetCachedListAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<List<Face>> IFaceCacheRepository.GetCachedListAsync()
         {
             throw new NotImplementedException();
         }

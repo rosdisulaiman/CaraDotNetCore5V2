@@ -18,6 +18,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 namespace CaraDotNetCore5V2.Web
 {
@@ -41,6 +42,9 @@ namespace CaraDotNetCore5V2.Web
                 o.IsDismissable = true;
                 o.HasRippleEffect = true;
             });
+            services.AddControllers().AddJsonOptions(x =>
+            x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+
             services.AddEssentials();
             services.AddApplicationLayer();
             services.AddInfrastructure(_configuration);
@@ -58,6 +62,7 @@ namespace CaraDotNetCore5V2.Web
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IViewRenderService, ViewRenderService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
