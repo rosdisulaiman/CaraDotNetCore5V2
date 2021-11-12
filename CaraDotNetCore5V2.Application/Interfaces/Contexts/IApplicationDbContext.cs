@@ -19,5 +19,9 @@ namespace CaraDotNetCore5V2.Application.Interfaces.Contexts
 
         DbSet<Product> Products { get; set; }
         DbSet<ScanLogs> ScanLogs { get; set; }
+
+        DbSet<DataLog> DataLogs { get; set; }
+
+        
     }
 }

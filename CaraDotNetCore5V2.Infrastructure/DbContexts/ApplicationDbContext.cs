@@ -25,6 +25,7 @@ namespace CaraDotNetCore5V2.Infrastructure.DbContexts
 
         public DbSet<Product> Products { get; set; }
         public DbSet<ScanLogs> ScanLogs { get; set; }
+        public DbSet<DataLog> DataLogs { get; set; }
 
         public IDbConnection Connection => Database.GetDbConnection();
 

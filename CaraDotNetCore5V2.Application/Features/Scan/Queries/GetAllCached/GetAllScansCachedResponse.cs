@@ -11,6 +11,8 @@ namespace CaraDotNetCore5V2.Application.Features.Scan.Queries.GetAllCached
     {
         public int LogId { get; set; }
         public DateTime LoggedTime { get; set; } = DateTime.Now;
+        public string devid { get; set; }
+        public string devname { get; set; }
         public string ScanLocation { get; set; }
         public int time { get; set; }
         public int timelocal { get; set; }

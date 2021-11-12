@@ -15,7 +15,8 @@ namespace CaraDotNetCore5V2.Application.Features.Scan.Commands.Create
     {
         public int LogId { get; set; }
         public DateTime LoggedTime { get; set; } = DateTime.Now;
-        public string ScanLocation { get; set; }
+        public string devid { get; set; }
+        public string devname { get; set; }
         public int time { get; set; }
         public int timelocal { get; set; }
         public List<CreateFaceCommand> Faces { get; set; }
@@ -40,7 +41,7 @@ namespace CaraDotNetCore5V2.Application.Features.Scan.Commands.Create
             var Scan = _mapper.Map<ScanLogs>(request);
             await _scanRepository.InsertAsync(Scan);
             await _unitOfWork.Commit(cancellationToken);
-            return Result<int>.Success(Scan.Id);
+            return Result<int>.Success(Scan.LogId);
         }
     }
 }

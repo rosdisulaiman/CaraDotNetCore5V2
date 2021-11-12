@@ -3,7 +3,6 @@ using CaraDotNetCore5V2.Application.Interfaces.CacheRepositories;
 using CaraDotNetCore5V2.Application.Interfaces.Repositories;
 using CaraDotNetCore5V2.Domain.Entities.Data;
 using Microsoft.Extensions.Caching.Distributed;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AspNetCoreHero.Extensions.Caching;

@@ -20,6 +20,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace CaraDotNetCore5V2.Api.Extensions
 {
@@ -38,6 +39,7 @@ namespace CaraDotNetCore5V2.Api.Extensions
         {
             services.RegisterSwagger();
             services.AddVersioning();
+            services.AddReferenceHandler();
         }
 
         private static void RegisterSwagger(this IServiceCollection services)
@@ -169,6 +171,21 @@ namespace CaraDotNetCore5V2.Api.Extensions
                         },
                     };
                 });
+        }
+
+        private static void AddReferenceHandler(this IServiceCollection services)
+        {
+            ////DOTNET 6 Fixing the error “A possible object cycle was detected” in different versions of ASP.NET Core
+            //services.AddControllers().AddJsonOptions(x =>
+            //    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+            //DOTNET 5 Fixing the error “A possible object cycle was detected” in different versions of ASP.NET Core
+            services.AddControllers().AddJsonOptions(x =>
+            x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+
+            ////// ASP dotnet Core 3.1
+            //services.AddControllers().AddNewtonsoftJson(x =>
+            //    x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
     }
 }

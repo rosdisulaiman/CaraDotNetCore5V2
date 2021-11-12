@@ -1,5 +1,7 @@
 ﻿using AspNetCoreHero.Results;
+using AutoMapper;
 using CaraDotNetCore5V2.Application.Extensions;
+using CaraDotNetCore5V2.Application.Features.Face.Queries;
 using CaraDotNetCore5V2.Application.Interfaces.Repositories;
 using CaraDotNetCore5V2.Domain.Entities.Data;
 using MediatR;
@@ -28,10 +30,12 @@ namespace CaraDotNetCore5V2.Application.Features.Scan.Queries.GetAllPaged
     public class GGetAllScansQueryHandler : IRequestHandler<GetAllScansQuery, PaginatedResult<GetAllScansResponse>>
     {
         private readonly IScanRepository _repository;
+        private readonly IMapper _mapper;
 
-        public GGetAllScansQueryHandler(IScanRepository repository)
+        public GGetAllScansQueryHandler(IScanRepository repository,  IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task<PaginatedResult<GetAllScansResponse>> Handle(GetAllScansQuery request, CancellationToken cancellationToken)
@@ -40,14 +44,18 @@ namespace CaraDotNetCore5V2.Application.Features.Scan.Queries.GetAllPaged
             {
                 LogId = e.LogId,
                 LoggedTime = e.LoggedTime,
+                devid = e.devid,
+                devname = e.devname,
                 time = e.time,
                 timelocal = e.timelocal
-                
             };
+        
+
             var paginatedList = await _repository.Scans
                 .Select(expression)
                 .ToPaginatedListAsync(request.PageNumber, request.PageSize);
             return paginatedList;
-        }
+
+    }
     }
 }

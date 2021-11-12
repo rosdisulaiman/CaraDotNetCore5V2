@@ -2,10 +2,8 @@
 using CaraDotNetCore5V2.Domain.Entities.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CaraDotNetCore5V2.Infrastructure.Repositories
@@ -33,8 +31,7 @@ namespace CaraDotNetCore5V2.Infrastructure.Repositories
         public async Task<ScanLogs> GetByIdAsync(int logId)
         {
             return await _repository.Entities.Where(s => s.LogId == logId)
-                .Include(f => f.Faces)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(s => s.LogId == logId);
         }
 
         public async Task<List<ScanLogs>> GetListAsync()

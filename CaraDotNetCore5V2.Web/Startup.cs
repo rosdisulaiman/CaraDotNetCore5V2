@@ -18,7 +18,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
-using System.Text.Json.Serialization;
+
+using Newtonsoft.Json;
 
 namespace CaraDotNetCore5V2.Web
 {
@@ -42,10 +43,20 @@ namespace CaraDotNetCore5V2.Web
                 o.IsDismissable = true;
                 o.HasRippleEffect = true;
             });
-            services.AddControllers().AddJsonOptions(x =>
-            x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
-            services.AddEssentials();
+            //services.AddControllers().AddJsonOptions(x =>
+            //x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+            services.AddControllers().AddNewtonsoftJson(x => 
+            x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
+            // if you not using .AddMvc use these methods instead 
+            services.AddControllers().AddNewtonsoftJson(x =>
+            x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            services.AddControllersWithViews().AddNewtonsoftJson(x =>
+            x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            services.AddRazorPages().AddNewtonsoftJson(x =>
+            x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
             services.AddApplicationLayer();
             services.AddInfrastructure(_configuration);
             services.AddPersistenceContexts(_configuration);
@@ -78,7 +89,6 @@ namespace CaraDotNetCore5V2.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.ConfigureSwagger();
             app.UseNotyf();
             app.UseHttpsRedirection();
             app.UseStaticFiles();

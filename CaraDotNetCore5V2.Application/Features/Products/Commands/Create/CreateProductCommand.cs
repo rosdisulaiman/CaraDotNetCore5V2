@@ -13,12 +13,11 @@ namespace CaraDotNetCore5V2.Application.Features.Products.Commands.Create
 {
     public partial class CreateProductCommand : IRequest<Result<int>>
     {
-        public int LogId { get; set; }
-        public DateTime LoggedTime { get; set; }
-        public string ScanLocation { get; set; }
-        public int time { get; set; }
-        public int timelocal { get; set; }
-        public List<CreateFaceCommand> Faces { get; set; }
+        public string Name { get; set; }
+        public string Barcode { get; set; }
+        public string Description { get; set; }
+        public decimal Rate { get; set; }
+        public int BrandId { get; set; }
     }
 
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Result<int>>
