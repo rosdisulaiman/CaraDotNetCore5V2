@@ -16,6 +16,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text.Json.Serialization;
 //using System.Text.Json.Serialization;
 
 namespace CaraDotNetCore5V2.Web.Extensions
@@ -52,11 +53,17 @@ namespace CaraDotNetCore5V2.Web.Extensions
             });
         }
 
+        public static void AddEssentials(this IServiceCollection services)
+        {
+            services.RegisterSwagger();
+            services.AddVersioning();
+        }
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddRouting(options => options.LowercaseUrls = true);
             services.AddPersistenceContexts(configuration);
             services.AddAuthenticationScheme(configuration);
+            services.AddHandler(configuration);
         }
 
         private static void AddAuthenticationScheme(this IServiceCollection services, IConfiguration configuration)
@@ -97,6 +104,55 @@ namespace CaraDotNetCore5V2.Web.Extensions
             services.AddTransient<IDateTimeService, SystemDateTimeService>();
             services.AddTransient<IMailService, SMTPMailService>();
             services.AddTransient<IAuthenticatedUserService, AuthenticatedUserService>();
+        }
+
+        public static void AddHandler(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddControllers().AddJsonOptions(x =>
+            x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+
+
+            //// if you not using .AddMvc use these methods instead 
+            //services.AddControllers().AddNewtonsoftJson(x =>
+            //x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            //services.AddControllersWithViews().AddNewtonsoftJson(x =>
+            //x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            //services.AddRazorPages().AddNewtonsoftJson(x =>
+            //x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
+        }
+
+        private static void RegisterSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                //TODO - Lowercase Swagger Documents
+                //c.DocumentFilter<LowercaseDocumentFilter>();
+                //Refer - https://gist.github.com/rafalkasa/01d5e3b265e5aa075678e0adfd54e23f
+                c.IncludeXmlComments(string.Format(@"{0}\CaraDotNetCore5V1.Web.xml", System.AppDomain.CurrentDomain.BaseDirectory));
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "CaraDotNetCore5V1",
+                    License = new OpenApiLicense()
+                    {
+                        Name = "MIT License",
+                        Url = new Uri("https://opensource.org/licenses/MIT")
+                    }
+                });
+
+
+            });
+        }
+
+        private static void AddVersioning(this IServiceCollection services)
+        {
+            services.AddApiVersioning(config =>
+            {
+                config.DefaultApiVersion = new ApiVersion(1, 0);
+                config.AssumeDefaultVersionWhenUnspecified = true;
+                config.ReportApiVersions = true;
+            });
         }
 
     }
