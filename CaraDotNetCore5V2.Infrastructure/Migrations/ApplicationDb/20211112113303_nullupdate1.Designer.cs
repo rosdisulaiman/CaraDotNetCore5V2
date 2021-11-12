@@ -4,14 +4,16 @@ using CaraDotNetCore5V2.Infrastructure.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211112113303_nullupdate1")]
+    partial class nullupdate1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,7 +141,7 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("LogId")
+                    b.Property<int>("LogId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("LoggedTime")
@@ -205,16 +207,16 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                     b.Property<string>("phone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float?>("temperature")
+                    b.Property<float>("temperature")
                         .HasColumnType("real");
 
                     b.Property<string>("temperatureAlarm")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("time")
+                    b.Property<int>("time")
                         .HasColumnType("int");
 
-                    b.Property<int?>("timelocal")
+                    b.Property<int>("timelocal")
                         .HasColumnType("int");
 
                     b.Property<int?>("timestamp")

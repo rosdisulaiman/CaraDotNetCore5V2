@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211108120823_ScanLogRepoInitial")]
-    partial class ScanLogRepoInitial
+    [Migration("20211112113511_nullupdate2")]
+    partial class nullupdate2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -132,6 +132,105 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                     b.HasIndex("BrandId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("CaraDotNetCore5V2.Domain.Entities.Data.DataLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int?>("LogId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("LoggedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("QRcode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("camid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("cardNum")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("certificateNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("certificateType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("commonUuid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("devid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("devname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("devno")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("groupId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("orgimg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("personId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("personUuid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float?>("temperature")
+                        .HasColumnType("real");
+
+                    b.Property<string>("temperatureAlarm")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("time")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("timelocal")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("timestamp")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("trackId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("userId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DataLogs");
                 });
 
             modelBuilder.Entity("CaraDotNetCore5V2.Domain.Entities.Data.Face", b =>

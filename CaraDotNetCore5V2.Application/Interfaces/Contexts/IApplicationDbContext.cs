@@ -22,6 +22,8 @@ namespace CaraDotNetCore5V2.Application.Interfaces.Contexts
 
         DbSet<DataLog> DataLogs { get; set; }
 
+       
+
         
     }
 }

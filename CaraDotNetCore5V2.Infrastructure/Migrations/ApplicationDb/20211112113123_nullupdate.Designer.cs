@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211111111548_datalogs")]
-    partial class datalogs
+    [Migration("20211112113123_nullupdate")]
+    partial class nullupdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -141,6 +141,9 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("LogId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("LoggedTime")
                         .HasColumnType("datetime2");
 
@@ -150,7 +153,7 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                     b.Property<string>("address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("age")
+                    b.Property<int?>("age")
                         .HasColumnType("int");
 
                     b.Property<string>("camid")
@@ -169,9 +172,6 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("devid")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("devmac")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("devname")
@@ -213,20 +213,17 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                     b.Property<string>("temperatureAlarm")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset>("time")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<int>("time")
+                        .HasColumnType("int");
 
-                    b.Property<DateTimeOffset>("timelocal")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<int>("timelocal")
+                        .HasColumnType("int");
 
                     b.Property<int>("timestamp")
                         .HasColumnType("int");
 
                     b.Property<int>("trackId")
                         .HasColumnType("int");
-
-                    b.Property<string>("type")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("userId")
                         .HasColumnType("nvarchar(max)");
