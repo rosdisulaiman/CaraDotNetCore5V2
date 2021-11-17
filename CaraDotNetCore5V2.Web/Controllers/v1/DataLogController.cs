@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using CaraDotNetCore5V2.API.Controllers;
 using CaraDotNetCore5V2.Application.Features.DataLog.Commands.Create;
 using CaraDotNetCore5V2.Application.Features.DataLog.Queries.GetAllPages;
 using CaraDotNetCore5V2.Application.Features.DataLog.Queries.GetById;
@@ -9,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CaraDotNetCore5V2.Api.Controllers.v1
+namespace CaraDotNetCore5V2.Web.Controllers.v1
 {
     [AllowAnonymous]
     public class DataLogController : BaseApiController<DataLogController>
@@ -41,7 +40,7 @@ namespace CaraDotNetCore5V2.Api.Controllers.v1
         public async Task<IActionResult> Post(Root command)
         {
             CreateDataLogCommand result = _mapper.Map<CreateDataLogCommand>(command);
-            result = _mapper.Map<Face, CreateDataLogCommand>(command.faces.FirstOrDefault(),result);
+            result = _mapper.Map<Face, CreateDataLogCommand>(command.faces.FirstOrDefault(), result);
             return Ok(await _mediator.Send(result));
         }
 

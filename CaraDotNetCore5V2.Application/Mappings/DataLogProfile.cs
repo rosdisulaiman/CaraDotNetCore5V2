@@ -19,7 +19,7 @@ namespace CaraDotNetCore5V2.Application.Mappings
             CreateMap<Root, CreateDataLogCommand>()
             .ForMember(dest => dest.time, opt => opt.MapFrom(src => DateTimeOffset.FromUnixTimeSeconds(src.time).DateTime))
             .ForMember(dest => dest.timelocal, opt => opt.MapFrom(src => DateTimeOffset.FromUnixTimeSeconds(src.timelocal).DateTime));
-            CreateMap<CaraDotNetCore5V2.Application.Features.DataLog.Commands.Create.Face, CreateDataLogCommand>();
+            CreateMap<Face, CreateDataLogCommand>();
             CreateMap<CreateDataLogCommand, DataLog>().ReverseMap();
 
 
