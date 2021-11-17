@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211112100728_DataScans")]
-    partial class DataScans
+    [Migration("20211117034900_intdatetime1")]
+    partial class intdatetime1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -141,65 +141,79 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("LogId")
+                    b.Property<int?>("LogId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("LoggedTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("QRcode")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("address")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
-                    b.Property<int>("age")
+                    b.Property<int?>("age")
                         .HasColumnType("int");
 
                     b.Property<string>("camid")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("cardNum")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("certificateNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("certificateType")
+                    b.Property<int?>("certificateType")
+                        .HasMaxLength(20)
                         .HasColumnType("int");
 
                     b.Property<string>("commonUuid")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("devid")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("devname")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("devno")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("email")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("gender")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("groupId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("orgimg")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("personId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("personUuid")
                         .HasColumnType("nvarchar(max)");
@@ -207,26 +221,28 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                     b.Property<string>("phone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("temperature")
+                    b.Property<float?>("temperature")
                         .HasColumnType("real");
 
                     b.Property<string>("temperatureAlarm")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("time")
+                    b.Property<int?>("time")
                         .HasColumnType("int");
 
-                    b.Property<int>("timelocal")
+                    b.Property<int?>("timelocal")
                         .HasColumnType("int");
 
-                    b.Property<int>("timestamp")
+                    b.Property<int?>("timestamp")
                         .HasColumnType("int");
 
-                    b.Property<int>("trackId")
+                    b.Property<int?>("trackId")
                         .HasColumnType("int");
 
                     b.Property<string>("userId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("Id");
 

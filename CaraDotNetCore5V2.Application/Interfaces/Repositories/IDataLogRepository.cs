@@ -9,6 +9,10 @@ namespace CaraDotNetCore5V2.Application.Interfaces.Repositories
 {
     public interface IDataLogRepository
     {
+        IQueryable<DataLog> Datalogs { get; }
+        Task<List<DataLog>> GetListAsync();
+        Task<DataLog> GetByIdAsync(int logId);
         Task<int> InsertAsync(DataLog dataLog);
+        Task DeleteAsync(DataLog dataLog);
     }
 }

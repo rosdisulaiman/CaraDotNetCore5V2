@@ -18,10 +18,31 @@ namespace CaraDotNetCore5V2.Infrastructure.Repositories
         {
             _repository = repository;
         }
+
+        public IQueryable<DataLog> Datalogs => throw new NotImplementedException();
+
+        public Task<DataLog> GetByIdAsync(int logId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<DataLog>> GetListAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<int> InsertAsync(DataLog dataLog)
         {
             await _repository.AddAsync(dataLog);
             return dataLog.Id;
         }
+
+        public Task DeleteAsync(DataLog dataLog)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        
     }
 }

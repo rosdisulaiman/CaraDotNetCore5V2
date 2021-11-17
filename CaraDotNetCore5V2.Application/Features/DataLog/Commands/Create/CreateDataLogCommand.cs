@@ -21,8 +21,11 @@ namespace CaraDotNetCore5V2.Application.Features.DataLog.Commands.Create
         public string devid { get; set; }
         public string devname { get; set; }
         public string devno { get; set; }
-        public int? time { get; set; }
-        public int? timelocal { get; set; }
+        public DateTimeOffset time { get; set; }
+        public DateTimeOffset timelocal { get; set; }
+        
+        //public int? time { get; set; }
+        //public int? timelocal { get; set; }
         public DateTime LoggedTime { get; set; }
         public string QRcode { get; set; }
         public string name { get; set; }
