@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using CaraDotNetCore5V2.API.Controllers;
 using CaraDotNetCore5V2.Application.Features.DataLog.Commands.Create;
+using CaraDotNetCore5V2.Application.Features.DataLog.Queries.GetAllPages;
+using CaraDotNetCore5V2.Application.Features.DataLog.Queries.GetById;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,6 +20,21 @@ namespace CaraDotNetCore5V2.Api.Controllers.v1
         {
             _mapper = mapper;
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll(int pageNumber, int pageSize)
+        {
+            var datalogs = await _mediator.Send(new GetAllDatalogsQuery(pageNumber, pageSize));
+            return Ok(datalogs);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var datalog = await _mediator.Send(new GetDatalogByIdQuery() { Id = id });
+            return Ok(datalog);
+        }
+
         // POST api/<controller>
         [HttpPost]
         public async Task<IActionResult> Post(Root command)
@@ -30,5 +43,12 @@ namespace CaraDotNetCore5V2.Api.Controllers.v1
             result = _mapper.Map<Face, CreateDataLogCommand>(command.faces.FirstOrDefault(),result);
             return Ok(await _mediator.Send(result));
         }
+
+        //// DELETE api/<controller>/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    return Ok(await _mediator.Send(new DeleteProductCommand { Id = id }));
+        //}
     }
 }

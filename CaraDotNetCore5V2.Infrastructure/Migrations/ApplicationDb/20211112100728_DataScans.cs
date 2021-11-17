@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
 {
-    public partial class updateDatalog : Migration
+    public partial class DataScans : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,35 +13,35 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LogId = table.Column<int>(type: "int", nullable: true),
-                    camid = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    devid = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    devname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    LogId = table.Column<int>(type: "int", nullable: false),
+                    camid = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    devid = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    devname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     devno = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    time = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    timelocal = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    time = table.Column<int>(type: "int", nullable: false),
+                    timelocal = table.Column<int>(type: "int", nullable: false),
                     LoggedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    QRcode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    address = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
-                    age = table.Column<int>(type: "int", nullable: true),
-                    cardNum = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    certificateNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    certificateType = table.Column<int>(type: "int", maxLength: 20, nullable: true),
-                    commonUuid = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    gender = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    groupId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    QRcode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    age = table.Column<int>(type: "int", nullable: false),
+                    cardNum = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    certificateNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    certificateType = table.Column<int>(type: "int", nullable: false),
+                    commonUuid = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    groupId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     orgimg = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    personId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    personId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     personUuid = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    temperature = table.Column<float>(type: "real", nullable: true),
-                    temperatureAlarm = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    timestamp = table.Column<int>(type: "int", nullable: true),
-                    trackId = table.Column<int>(type: "int", nullable: true),
-                    userId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true)
+                    temperature = table.Column<float>(type: "real", nullable: false),
+                    temperatureAlarm = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    timestamp = table.Column<int>(type: "int", nullable: false),
+                    trackId = table.Column<int>(type: "int", nullable: false),
+                    userId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

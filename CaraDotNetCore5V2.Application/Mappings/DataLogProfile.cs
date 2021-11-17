@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using CaraDotNetCore5V2.Application.Features.DataLog.Commands.Create;
+using CaraDotNetCore5V2.Application.Features.DataLog.GetAllCached;
+using CaraDotNetCore5V2.Application.Features.DataLog.Queries.GetAllPages;
+using CaraDotNetCore5V2.Application.Features.DataLog.Queries.GetById;
 using CaraDotNetCore5V2.Domain.Entities.Data;
 using System;
 using System.Collections.Generic;
@@ -19,6 +22,12 @@ namespace CaraDotNetCore5V2.Application.Mappings
             CreateMap<CaraDotNetCore5V2.Application.Features.DataLog.Commands.Create.Face, CreateDataLogCommand>();
             CreateMap<CreateDataLogCommand, DataLog>().ReverseMap();
 
+
+
+            CreateMap<CreateDataLogCommand, DataLog>().ReverseMap();
+            CreateMap<GetDatalogByIdResponse, DataLog>().ReverseMap();
+            CreateMap<GetAllDataLogsCachedResponse, DataLog>().ReverseMap();
+            CreateMap<GetAllDatalogsResponse, DataLog>().ReverseMap();
         }
     }
 }

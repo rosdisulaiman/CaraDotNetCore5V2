@@ -18,13 +18,13 @@ namespace CaraDotNetCore5V2.Api.Controllers.v1
     public class ScanController : BaseApiController<ScanController>
     {
 
-        //[HttpGet]
-        //public async Task<IActionResult> GetAll(int pageNumber, int pageSize)
-        //{
-        //    var scans = await _mediator.Send(new GetAllScansQuery(pageNumber, pageSize));
+        [HttpGet]
+        public async Task<IActionResult> GetAll(int pageNumber, int pageSize)
+        {
+            var scans = await _mediator.Send(new GetAllScansQuery(pageNumber, pageSize));
 
-        //    return Ok(scans);
-        //}
+            return Ok(scans);
+        }
 
         //[HttpGet("{id}")]
         //public async Task<IActionResult> GetById(int id)

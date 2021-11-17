@@ -21,21 +21,14 @@ namespace CaraDotNetCore5V2.Infrastructure.Repositories
 
         public IQueryable<Product> Products => _repository.Entities;
 
-        public async Task DeleteAsync(Product product)
+        public async Task<List<Product>> GetListAsync()
         {
-            await _repository.DeleteAsync(product);
-            await _distributedCache.RemoveAsync(CacheKeys.ProductCacheKeys.ListKey);
-            await _distributedCache.RemoveAsync(CacheKeys.ProductCacheKeys.GetKey(product.Id));
+            return await _repository.Entities.ToListAsync();
         }
 
         public async Task<Product> GetByIdAsync(int productId)
         {
             return await _repository.Entities.Where(p => p.Id == productId).FirstOrDefaultAsync();
-        }
-
-        public async Task<List<Product>> GetListAsync()
-        {
-            return await _repository.Entities.ToListAsync();
         }
 
         public async Task<int> InsertAsync(Product product)
@@ -48,6 +41,13 @@ namespace CaraDotNetCore5V2.Infrastructure.Repositories
         public async Task UpdateAsync(Product product)
         {
             await _repository.UpdateAsync(product);
+            await _distributedCache.RemoveAsync(CacheKeys.ProductCacheKeys.ListKey);
+            await _distributedCache.RemoveAsync(CacheKeys.ProductCacheKeys.GetKey(product.Id));
+        }
+
+        public async Task DeleteAsync(Product product)
+        {
+            await _repository.DeleteAsync(product);
             await _distributedCache.RemoveAsync(CacheKeys.ProductCacheKeys.ListKey);
             await _distributedCache.RemoveAsync(CacheKeys.ProductCacheKeys.GetKey(product.Id));
         }

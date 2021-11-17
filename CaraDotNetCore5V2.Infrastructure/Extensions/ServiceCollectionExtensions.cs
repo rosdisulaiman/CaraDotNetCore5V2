@@ -33,6 +33,8 @@ namespace CaraDotNetCore5V2.Infrastructure.Extensions
             services.AddTransient<IScanCacheRepository, ScanCacheRepository>();
             services.AddTransient<IFaceRepository, FaceRepository>();
             services.AddTransient<IFaceCacheRepository, FaceCacheRepository>();
+            services.AddTransient<IDataLogRepository, DataLogRepository>();
+            services.AddTransient<IDataLogCacheRepository, DataLogCacheRepositories>();
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
