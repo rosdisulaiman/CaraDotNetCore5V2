@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211112113511_nullupdate2")]
-    partial class nullupdate2
+    [Migration("20211118042009_ScanDatas")]
+    partial class ScanDatas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -141,14 +141,12 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("LogId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("LoggedTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("QRcode")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("address")
                         .HasColumnType("nvarchar(max)");
@@ -213,11 +211,11 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                     b.Property<string>("temperatureAlarm")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("time")
-                        .HasColumnType("int");
+                    b.Property<DateTimeOffset>("time")
+                        .HasColumnType("datetimeoffset");
 
-                    b.Property<int?>("timelocal")
-                        .HasColumnType("int");
+                    b.Property<DateTimeOffset>("timelocal")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<int?>("timestamp")
                         .HasColumnType("int");
@@ -270,6 +268,51 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                     b.Property<int>("age")
                         .HasColumnType("int");
 
+                    b.Property<int>("attrAge")
+                        .HasColumnType("int");
+
+                    b.Property<int>("attrBeauty")
+                        .HasColumnType("int");
+
+                    b.Property<string>("attrExpression")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrEye")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrGender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrGlass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrMouth")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrMustache")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrSkinColor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrSmile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("authType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("bgHeight")
+                        .HasColumnType("int");
+
+                    b.Property<int>("bgWidth")
+                        .HasColumnType("int");
+
+                    b.Property<double>("blurProb")
+                        .HasColumnType("float");
+
+                    b.Property<string>("cap")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("cardNum")
                         .HasColumnType("nvarchar(max)");
 
@@ -282,8 +325,29 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                     b.Property<string>("commonUuid")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("coordX0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("coordX1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("coordY0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("coordY1")
+                        .HasColumnType("int");
+
+                    b.Property<string>("debugStage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("email")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ethic")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("frameId")
+                        .HasColumnType("int");
 
                     b.Property<string>("gender")
                         .HasColumnType("nvarchar(max)");
@@ -291,8 +355,47 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                     b.Property<string>("groupId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("headPitch")
+                        .HasColumnType("float");
+
+                    b.Property<double>("headRoll")
+                        .HasColumnType("float");
+
+                    b.Property<double>("headYaw")
+                        .HasColumnType("float");
+
                     b.Property<string>("image")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("imageX0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("imageX1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("imageY0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("imageY1")
+                        .HasColumnType("int");
+
+                    b.Property<string>("irimg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("irimgX0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("irimgX1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("irimgY0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("irimgY1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("liveness")
+                        .HasColumnType("int");
 
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
@@ -307,6 +410,24 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("plateId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("respirator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("respiratorLevel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("score")
+                        .HasColumnType("float");
+
+                    b.Property<double>("similarity")
+                        .HasColumnType("float");
+
+                    b.Property<string>("status")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("temperature")

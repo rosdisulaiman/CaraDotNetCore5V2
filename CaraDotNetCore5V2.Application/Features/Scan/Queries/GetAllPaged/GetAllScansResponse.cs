@@ -15,5 +15,6 @@ namespace CaraDotNetCore5V2.Application.Features.Scan.Queries.GetAllPaged
         public string devname { get; set; }
         public int time { get; set; }
         public int timelocal { get; set; }
+        public List<CreateFaceCommand> Faces { get; set; }
     }
 }

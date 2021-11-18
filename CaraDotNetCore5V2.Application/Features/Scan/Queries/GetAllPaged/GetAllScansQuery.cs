@@ -1,6 +1,7 @@
 ﻿using AspNetCoreHero.Results;
 using AutoMapper;
 using CaraDotNetCore5V2.Application.Extensions;
+using CaraDotNetCore5V2.Application.Features.Face.Commands.Create;
 using CaraDotNetCore5V2.Application.Features.Face.Queries;
 using CaraDotNetCore5V2.Application.Interfaces.Repositories;
 using CaraDotNetCore5V2.Domain.Entities.Data;
@@ -48,6 +49,8 @@ namespace CaraDotNetCore5V2.Application.Features.Scan.Queries.GetAllPaged
                 devname = e.devname,
                 time = e.time,
                 timelocal = e.timelocal
+                //,
+                //Faces = _mapper.Map<List<CreateFaceCommand>>(e.Faces)
             };
         
 

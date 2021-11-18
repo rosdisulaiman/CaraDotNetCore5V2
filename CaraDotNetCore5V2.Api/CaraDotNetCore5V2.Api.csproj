@@ -27,5 +27,10 @@
     <ProjectReference Include="..\CaraDotNetCore5V2.Infrastructure.Shared\CaraDotNetCore5V2.Infrastructure.Shared.csproj" />
     <ProjectReference Include="..\CaraDotNetCore5V2.Infrastructure\CaraDotNetCore5V2.Infrastructure.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="CaraDotNetCore5V2.Api.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>

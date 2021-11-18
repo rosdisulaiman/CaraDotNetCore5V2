@@ -30,7 +30,11 @@ namespace CaraDotNetCore5V2.Infrastructure.Repositories
 
         public async Task<ScanLogs> GetByIdAsync(int logId)
         {
-            return await _repository.Entities.Where(s => s.LogId == logId)
+            //return await _repository.Entities.Where(s => s.LogId == logId)
+            //    .Include(f => f.Faces)
+            //    .FirstOrDefaultAsync(s => s.LogId == logId);
+
+            return await _repository.Entities.AsNoTracking().Include(e => e.Faces)
                 .FirstOrDefaultAsync(s => s.LogId == logId);
         }
 

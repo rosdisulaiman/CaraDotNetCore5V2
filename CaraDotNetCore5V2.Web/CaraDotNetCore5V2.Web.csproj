@@ -62,4 +62,10 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="CaraDotNetCore5V1.Web.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

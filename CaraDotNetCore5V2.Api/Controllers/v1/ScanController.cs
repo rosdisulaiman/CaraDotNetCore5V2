@@ -11,9 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace CaraDotNetCore5V2.Api.Controllers.v1
-{
-    [Route("api/[controller]")]
-    [ApiController]
+{    
     [AllowAnonymous]
     public class ScanController : BaseApiController<ScanController>
     {
@@ -26,12 +24,12 @@ namespace CaraDotNetCore5V2.Api.Controllers.v1
             return Ok(scans);
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetById(int id)
-        //{
-        //    var scan = await _mediator.Send(new GetScanByIdQuery() { LogId = id });
-        //    return Ok(scan);
-        //}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var scan = await _mediator.Send(new GetScanByIdQuery() { LogId = id });
+            return Ok(scan);
+        }
 
         // POST api/<controller>
         [HttpPost]

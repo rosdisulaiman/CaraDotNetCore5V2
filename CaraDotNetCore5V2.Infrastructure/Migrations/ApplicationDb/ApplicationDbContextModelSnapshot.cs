@@ -229,6 +229,290 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                     b.ToTable("DataLogs");
                 });
 
+            modelBuilder.Entity("CaraDotNetCore5V2.Domain.Entities.Data.Face", b =>
+                {
+                    b.Property<int>("FaceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LogId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("QRcode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ScanLogsLogId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("age")
+                        .HasColumnType("int");
+
+                    b.Property<int>("attrAge")
+                        .HasColumnType("int");
+
+                    b.Property<int>("attrBeauty")
+                        .HasColumnType("int");
+
+                    b.Property<string>("attrExpression")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrEye")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrGender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrGlass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrMouth")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrMustache")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrSkinColor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("attrSmile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("authType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("bgHeight")
+                        .HasColumnType("int");
+
+                    b.Property<int>("bgWidth")
+                        .HasColumnType("int");
+
+                    b.Property<double>("blurProb")
+                        .HasColumnType("float");
+
+                    b.Property<string>("cap")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("cardNum")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("certificateNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("certificateType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("commonUuid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("coordX0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("coordX1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("coordY0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("coordY1")
+                        .HasColumnType("int");
+
+                    b.Property<string>("debugStage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ethic")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("frameId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("groupId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("headPitch")
+                        .HasColumnType("float");
+
+                    b.Property<double>("headRoll")
+                        .HasColumnType("float");
+
+                    b.Property<double>("headYaw")
+                        .HasColumnType("float");
+
+                    b.Property<string>("image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("imageX0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("imageX1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("imageY0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("imageY1")
+                        .HasColumnType("int");
+
+                    b.Property<string>("irimg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("irimgX0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("irimgX1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("irimgY0")
+                        .HasColumnType("int");
+
+                    b.Property<int>("irimgY1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("liveness")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("orgimg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("personId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("personUuid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("plateId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("respirator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("respiratorLevel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("score")
+                        .HasColumnType("float");
+
+                    b.Property<double>("similarity")
+                        .HasColumnType("float");
+
+                    b.Property<string>("status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("temperature")
+                        .HasColumnType("real")
+                        .HasColumnName("Temperature");
+
+                    b.Property<string>("temperatureAlarm")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("timestamp")
+                        .HasColumnType("int");
+
+                    b.Property<int>("trackId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("userId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FaceId");
+
+                    b.HasIndex("ScanLogsLogId");
+
+                    b.ToTable("Face");
+                });
+
+            modelBuilder.Entity("CaraDotNetCore5V2.Domain.Entities.Data.ScanLogs", b =>
+                {
+                    b.Property<int>("LogId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LoggedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Operator")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("operator");
+
+                    b.Property<string>("_event")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("event");
+
+                    b.Property<string>("camid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("devid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("devmac")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("devname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("devno")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("time")
+                        .HasColumnType("int");
+
+                    b.Property<int>("timelocal")
+                        .HasColumnType("int");
+
+                    b.Property<string>("type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LogId");
+
+                    b.ToTable("ScanLogs");
+                });
+
             modelBuilder.Entity("CaraDotNetCore5V2.Domain.Entities.Catalog.Product", b =>
                 {
                     b.HasOne("CaraDotNetCore5V2.Domain.Entities.Catalog.Brand", "Brand")
@@ -238,6 +522,20 @@ namespace CaraDotNetCore5V2.Infrastructure.Migrations.ApplicationDb
                         .IsRequired();
 
                     b.Navigation("Brand");
+                });
+
+            modelBuilder.Entity("CaraDotNetCore5V2.Domain.Entities.Data.Face", b =>
+                {
+                    b.HasOne("CaraDotNetCore5V2.Domain.Entities.Data.ScanLogs", "ScanLogs")
+                        .WithMany("Faces")
+                        .HasForeignKey("ScanLogsLogId");
+
+                    b.Navigation("ScanLogs");
+                });
+
+            modelBuilder.Entity("CaraDotNetCore5V2.Domain.Entities.Data.ScanLogs", b =>
+                {
+                    b.Navigation("Faces");
                 });
 #pragma warning restore 612, 618
         }
